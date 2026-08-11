@@ -72,31 +72,7 @@ The Harness processes requests sequentially through these seven parts:
    - If a local Ollama instance is running, it queries the available local models and uses them.
    - It scans standard global folders and workspace files for Model Context Protocol (MCP) servers and IDE rules, dynamically loading them.
 
----
 
-## Usage
-
-### Run with Auto-Detection (Zero-Config)
-```bash
-./harness.sh --prompt "Hello"
-# Or on Windows:
-harness.bat --prompt "Hello"
-```
-
-### Run specifying a Provider
-```bash
-# Using Gemini
-./harness.sh --prompt "Summarize package.json" --provider gemini
-
-# Using OpenAI
-./harness.sh --prompt "Hello" --provider openai --modelName gpt-4o-mini
-```
-
-### Automatic Memory Management
-
-The Harness automatically reads, writes, and manages transaction memory files inside `data/memory/` and caches session histories inside `data/` during prompt execution. Developers do not need to manually issue read/write commands.
-
----
 
 ## Repository Policy
 
