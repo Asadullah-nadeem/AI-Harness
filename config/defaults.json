@@ -1,0 +1,215 @@
+{
+  "providers": [
+    {
+      "id": "gemini",
+      "name": "Google Gemini",
+      "envKey": "GEMINI_API_KEY",
+      "type": "cloud",
+      "defaultModel": "gemini-1.5-flash",
+      "testUrl": "https://generativelanguage.googleapis.com/v1beta/models",
+      "models": ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-2.0-flash-exp"]
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "envKey": "OPENAI_API_KEY",
+      "type": "cloud",
+      "defaultModel": "gpt-4o-mini",
+      "testUrl": "https://api.openai.com/v1/chat/completions",
+      "models": ["gpt-4o-mini", "gpt-4o", "gpt-3.5-turbo"]
+    },
+    {
+      "id": "ollama",
+      "name": "Ollama (Local AI)",
+      "type": "local",
+      "baseUrl": "http://localhost:11434",
+      "testUrl": "http://localhost:11434/api/tags",
+      "models": ["qwen2.5-coder", "llama3.1", "mistral"]
+    }
+  ],
+  "ides": [
+    {
+      "id": "cursor",
+      "name": "Cursor AI Code Editor",
+      "detectionFiles": [".cursorrules"],
+      "compatibility": "Fully compatible via .cursorrules custom instructions."
+    },
+    {
+      "id": "windsurf",
+      "name": "Windsurf IDE",
+      "detectionFiles": [".windsurfrules"],
+      "compatibility": "Compatible via custom prompt context files."
+    },
+    {
+      "id": "cline",
+      "name": "Cline VS Code Extension",
+      "detectionFiles": [".clinerules"],
+      "compatibility": "Supports custom system instructions and tools override."
+    },
+    {
+      "id": "vscode",
+      "name": "Visual Studio Code",
+      "detectionFiles": [".vscode"],
+      "envKeys": ["TERM_PROGRAM"],
+      "compatibility": "Integrates via global settings and workspace configs."
+    }
+  ],
+  "mcp": {
+    "defaultPaths": {
+      "win32": [
+        "%APPDATA%\\Claude\\claude_desktop_config.json",
+        "%APPDATA%\\Code\\User\\globalStorage\\saoudrizwan.claude-dev\\settings\\cline_mcp_settings.json"
+      ],
+      "darwin": [
+        "~/Library/Application Support/Claude/claude_desktop_config.json",
+        "~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json"
+      ],
+      "linux": [
+        "~/.config/Claude/claude_desktop_config.json",
+        "~/.config/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json"
+      ]
+    },
+    "localConfigs": [
+      "mcp_settings.json",
+      "../mcp_settings.json"
+    ]
+  },
+  "environments": [
+    {
+      "id": "node",
+      "name": "Node.js Runtime",
+      "type": "runtime",
+      "checkCommand": "node -v"
+    },
+    {
+      "id": "python",
+      "name": "Python Runtime",
+      "type": "runtime",
+      "checkCommand": "python --version"
+    },
+    {
+      "id": "php",
+      "name": "PHP Runtime",
+      "type": "runtime",
+      "checkCommand": "php -v"
+    },
+    {
+      "id": "bun",
+      "name": "Bun Runtime",
+      "type": "runtime",
+      "checkCommand": "bun --version"
+    },
+    {
+      "id": "composer",
+      "name": "Composer Package Manager",
+      "type": "package_manager",
+      "checkCommand": "composer --version"
+    },
+    {
+      "id": "npm",
+      "name": "npm Package Manager",
+      "type": "package_manager",
+      "checkCommand": "npm -v"
+    },
+    {
+      "id": "yarn",
+      "name": "Yarn Package Manager",
+      "type": "package_manager",
+      "checkCommand": "yarn -v"
+    },
+    {
+      "id": "pnpm",
+      "name": "PNPM Package Manager",
+      "type": "package_manager",
+      "checkCommand": "pnpm -v"
+    },
+    {
+      "id": "bash",
+      "name": "Bash Shell",
+      "type": "shell",
+      "checkCommand": "bash --version"
+    },
+    {
+      "id": "powershell",
+      "name": "PowerShell",
+      "type": "shell",
+      "checkCommand": "powershell -Command \"$PSVersionTable.PSVersion\""
+    }
+  ],
+  "cliTools": [
+    {
+      "id": "git",
+      "name": "Git Version Control",
+      "checkCommand": "git --version"
+    },
+    {
+      "id": "docker",
+      "name": "Docker Container Engine",
+      "checkCommand": "docker --version"
+    },
+    {
+      "id": "make",
+      "name": "GNU Make Utility",
+      "checkCommand": "make --version"
+    },
+    {
+      "id": "tsc",
+      "name": "TypeScript Compiler",
+      "checkCommand": "tsc --version"
+    }
+  ],
+  "projects": [
+    {
+      "id": "node_project",
+      "name": "Node.js Project",
+      "triggers": ["package.json"],
+      "folders": ["node_modules", "src"]
+    },
+    {
+      "id": "react_project",
+      "name": "React Project",
+      "triggers": ["vite.config.ts", "vite.config.js"],
+      "folders": ["src"]
+    },
+    {
+      "id": "python_project",
+      "name": "Python Project",
+      "triggers": ["requirements.txt", "pyproject.toml"],
+      "folders": []
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "code_execution",
+      "name": "Code Execution Capability",
+      "requiredRuntimes": ["node", "python", "bun"],
+      "description": "Allows the agent to execute code snippets locally when runtimes are present."
+    },
+    {
+      "id": "git_ops",
+      "name": "Git Operations Capability",
+      "requiredTools": ["git"],
+      "description": "Allows version control tracking, status updates, and history inspection."
+    },
+    {
+      "id": "container_ops",
+      "name": "Container Operations Capability",
+      "requiredTools": ["docker"],
+      "description": "Allows managing local application containers and images."
+    }
+  ],
+  "integrations": [
+    {
+      "id": "file_reader",
+      "name": "Workspace File System Reader",
+      "enabled": true,
+      "rules": "Allows AI models to view files in the repository. Redacts private keys or tokens automatically."
+    },
+    {
+      "id": "file_writer",
+      "name": "Workspace File System Writer",
+      "enabled": true,
+      "rules": "Allows AI models to safely write/edit files. Backs up or prompts before destructive actions."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "ai-harness",
+  "version": "1.0.0",
+  "description": "Standalone, executable AI Harness based on 7 core components (Prompt, Tools, Memory, AI Model, Evaluation, Guardrails, Output) with built-in MCP capability.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "ai-harness": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "dev": "tsx src/cli.ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.1"
+  }
+}

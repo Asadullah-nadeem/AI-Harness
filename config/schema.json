@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AIHarnessConfig",
+  "type": "object",
+  "properties": {
+    "providers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "envKey": { "type": "string" },
+          "type": { "type": "string" },
+          "defaultModel": { "type": "string" },
+          "testUrl": { "type": "string" },
+          "models": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["id", "name"]
+      }
+    },
+    "ides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "detectionFiles": { "type": "array", "items": { "type": "string" } },
+          "compatibility": { "type": "string" }
+        },
+        "required": ["id", "name"]
+      }
+    },
+    "mcp": {
+      "type": "object",
+      "properties": {
+        "defaultPaths": {
+          "type": "object",
+          "properties": {
+            "win32": { "type": "array", "items": { "type": "string" } },
+            "darwin": { "type": "array", "items": { "type": "string" } },
+            "linux": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "localConfigs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "environments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "type": { "type": "string" },
+          "checkCommand": { "type": "string" }
+        },
+        "required": ["id", "name", "type"]
+      }
+    },
+    "cliTools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "checkCommand": { "type": "string" }
+        },
+        "required": ["id", "name", "checkCommand"]
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "triggers": { "type": "array", "items": { "type": "string" } },
+          "folders": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["id", "name", "triggers"]
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "requiredRuntimes": { "type": "array", "items": { "type": "string" } },
+          "requiredTools": { "type": "array", "items": { "type": "string" } },
+          "description": { "type": "string" }
+        },
+        "required": ["id", "name"]
+      }
+    },
+    "integrations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "enabled": { "type": "boolean" },
+          "rules": { "type": "string" }
+        },
+        "required": ["id", "name", "enabled"]
+      }
+    }
+  }
+}
